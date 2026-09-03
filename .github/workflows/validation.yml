@@ -55,10 +55,12 @@ jobs:
           cmake --build build-callgrind --parallel 2 --target qdev_profile
           valgrind --tool=callgrind --instr-atstart=no --collect-jumps=yes \
             --callgrind-out-file=results/callgrind.out \
-            ./build-callgrind/qdev_profile --events 200000 --seed 20260902 > results/profile_run.txt
+            ./build-callgrind/qdev_profile --events 200000 --seed 20260902 \
+            > results/profile_run.txt 2> results/callgrind_stderr.txt
+          cat results/callgrind_stderr.txt
           callgrind_annotate --auto=yes --threshold=95 results/callgrind.out > results/callgrind.txt
       - name: Instruction-count regression guard
-        run: python3 verify_reference.py --benchmark results/benchmark.json --callgrind results/callgrind.out
+        run: python3 verify_reference.py --benchmark results/benchmark.json --callgrind-log results/callgrind_stderr.txt
       - name: Environment metadata
         run: |
           {
@@ -83,5 +85,6 @@ jobs:
             results/profile_run.txt
             results/callgrind.out
             results/callgrind.txt
+            results/callgrind_stderr.txt
             results/environment.txt
           retention-days: 30

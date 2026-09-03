@@ -1,0 +1,87 @@
+name: C++ Trading Engine Validation
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - name: Configure Release
+        run: cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
+      - name: Build
+        run: cmake --build build --parallel 2
+      - name: Unit and invariant tests
+        run: ctest --test-dir build --output-on-failure
+      - name: Sanitizer configure/build/test
+        run: |
+          cmake -S . -B build-sanitize -DCMAKE_BUILD_TYPE=Debug -DQDEV_SANITIZE=ON
+          cmake --build build-sanitize --parallel 2
+          ctest --test-dir build-sanitize --output-on-failure
+      - name: Release benchmark
+        run: |
+          mkdir -p results
+          ./build/qdev_bench --events 1000000 --seed 20260902 --json results/benchmark.json
+      - name: Accepted-reference and 1m-event semantic gate
+        run: python3 verify_reference.py --benchmark results/benchmark.json
+      - name: Deterministic repeatability gate
+        run: |
+          ./build/qdev_bench --events 200000 --seed 20260902 --json results/repeat_a.json > results/repeat_a.txt
+          ./build/qdev_bench --events 200000 --seed 20260902 --json results/repeat_b.json > results/repeat_b.txt
+          python3 - <<'PY'
+          import json
+          a=json.load(open('results/repeat_a.json'))
+          b=json.load(open('results/repeat_b.json'))
+          keys=['events','seed','fills','filled_quantity','rejected_cancels','live_orders','resting_quantity','state_checksum']
+          assert {k:a[k] for k in keys} == {k:b[k] for k in keys}, (a,b)
+          print('deterministic replay gate passed:', a['state_checksum'])
+          PY
+      - name: Install Callgrind
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq valgrind
+      - name: Callgrind replay hotspot evidence
+        run: |
+          cmake -S . -B build-callgrind -DCMAKE_BUILD_TYPE=Release -DQDEV_CALLGRIND=ON
+          cmake --build build-callgrind --parallel 2 --target qdev_profile
+          valgrind --tool=callgrind --instr-atstart=no --collect-jumps=yes \
+            --callgrind-out-file=results/callgrind.out \
+            ./build-callgrind/qdev_profile --events 200000 --seed 20260902 > results/profile_run.txt
+          callgrind_annotate --auto=yes --threshold=95 results/callgrind.out > results/callgrind.txt
+      - name: Instruction-count regression guard
+        run: python3 verify_reference.py --benchmark results/benchmark.json --callgrind results/callgrind.out
+      - name: Environment metadata
+        run: |
+          {
+            uname -a
+            echo
+            c++ --version
+            echo
+            cmake --version
+            echo
+            valgrind --version
+          } > results/environment.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: cpp-trading-engine-evidence
+          path: |
+            results/benchmark.json
+            results/reference_verification.json
+            results/repeat_a.json
+            results/repeat_b.json
+            results/repeat_a.txt
+            results/repeat_b.txt
+            results/profile_run.txt
+            results/callgrind.out
+            results/callgrind.txt
+            results/environment.txt
+          retention-days: 30

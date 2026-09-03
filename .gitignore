@@ -1,0 +1,9 @@
+build/
+results/*.json
+results/*.txt
+!results/.gitkeep
+gmon.out
+*.o
+*.a
+*.so
+*.dSYM/

@@ -1,0 +1,71 @@
+{
+  "reference_workload": {
+    "events": 1000000,
+    "seed": 20260902
+  },
+  "validation_points": [
+    {
+      "label": "baseline",
+      "commit": "a86021a4a7d05848a9d8abef6f704b5901434d6c",
+      "github_actions_run": 33625315672,
+      "actions_artifact_sha256": "cc5651cad9c08d3808905afb22a3d20cb74e9f4cd86073faf39f2ea210bae889",
+      "benchmark": {
+        "average_ns_per_event": 145.102,
+        "throughput_events_per_sec": 6891720.201,
+        "fills": 284852,
+        "filled_quantity": 1573724,
+        "rejected_cancels": 41397,
+        "live_orders": 491440,
+        "resting_quantity": 5005317,
+        "state_checksum": 17584781756899873247
+      },
+      "callgrind_replay_instructions": 140001502
+    },
+    {
+      "label": "reusable_fill_buffer",
+      "commit": "f1a75fff7dc5aae958f66659c5a333fa1e96a48a",
+      "github_actions_run": 33626558691,
+      "actions_artifact_sha256": "22e5d6ee2be78bef8c13c8708e25cbf3635b443716afc3f93c1f0568be947c46",
+      "benchmark": {
+        "average_ns_per_event": 130.76,
+        "throughput_events_per_sec": 7647585.729,
+        "fills": 284852,
+        "filled_quantity": 1573724,
+        "rejected_cancels": 41397,
+        "live_orders": 491440,
+        "resting_quantity": 5005317,
+        "state_checksum": 17584781756899873247
+      },
+      "callgrind_replay_instructions": 108873262
+    },
+    {
+      "label": "release_hot_path",
+      "commit": "7652e893b527370d19b1500d4f4de6f06806d5ef",
+      "github_actions_run": 33627360618,
+      "actions_artifact_sha256": "975c219b4c2375e5f84ace4198879d64ff436d37cdd514fdc54a6b7c3ed55a77",
+      "benchmark": {
+        "average_ns_per_event": 104.115,
+        "throughput_events_per_sec": 9604761.103,
+        "fills": 284852,
+        "filled_quantity": 1573724,
+        "rejected_cancels": 41397,
+        "live_orders": 491440,
+        "resting_quantity": 5005317,
+        "state_checksum": 17584781756899873247
+      },
+      "callgrind_replay_instructions": 100873271
+    }
+  ],
+  "accepted_environment": {
+    "os": "Ubuntu 24.04 GitHub-hosted runner",
+    "compiler": "GCC 13.3.0",
+    "cmake": "3.31.6",
+    "valgrind": "3.22.0"
+  },
+  "accepted_change_vs_baseline": {
+    "average_ns_per_event_pct": -28.24703,
+    "throughput_pct": 39.36667,
+    "callgrind_instruction_pct": -27.94844,
+    "semantic_output_identity": true
+  }
+}

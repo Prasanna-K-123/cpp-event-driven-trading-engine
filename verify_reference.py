@@ -10,6 +10,7 @@ from __future__ import annotations
 import argparse
 import json
 import math
+import re
 from pathlib import Path
 
 REFERENCE = Path("reference/performance_validation.json")
@@ -27,24 +28,23 @@ def pct_change(new: float, old: float) -> float:
     return (float(new) / float(old) - 1.0) * 100.0
 
 
-def parse_callgrind_summary(path: Path) -> int:
-    summaries: list[int] = []
-    for line in path.read_text(encoding="utf-8", errors="replace").splitlines():
-        if line.startswith("summary:"):
-            token = line.split(":", 1)[1].strip().split()[0].replace(",", "")
-            summaries.append(int(token))
-    if not summaries:
-        raise AssertionError(f"Callgrind summary not found in {path}")
-    collected = max(summaries)
+def parse_callgrind_collected_log(path: Path) -> int:
+    text = path.read_text(encoding="utf-8", errors="replace")
+    matches = re.findall(r"Collected\s*:\s*([0-9,]+)", text)
+    if not matches:
+        matches = re.findall(r"I\s+refs:\s*([0-9,]+)", text)
+    if not matches:
+        raise AssertionError(f"Callgrind collected-instruction count not found in {path}")
+    collected = int(matches[-1].replace(",", ""))
     if collected <= 0:
-        raise AssertionError(f"Callgrind collected no replay instructions in {path}: {summaries}")
+        raise AssertionError(f"Callgrind collected no replay instructions in {path}: {collected}")
     return collected
 
 
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--benchmark", type=Path)
-    parser.add_argument("--callgrind", type=Path)
+    parser.add_argument("--callgrind-log", type=Path)
     parser.add_argument("--output", type=Path, default=Path("results/reference_verification.json"))
     args = parser.parse_args()
 
@@ -107,8 +107,8 @@ def main() -> None:
         result["current_throughput_events_per_sec_observed"] = current["throughput_events_per_sec"]
         result["wall_clock_gate"] = "NOT_APPLIED_RUNNER_DEPENDENT"
 
-    if args.callgrind is not None:
-        current_instructions = parse_callgrind_summary(args.callgrind)
+    if args.callgrind_log is not None:
+        current_instructions = parse_callgrind_collected_log(args.callgrind_log)
         accepted_instructions = int(final["callgrind_replay_instructions"])
         ratio = current_instructions / accepted_instructions
         # Callgrind instruction count is substantially more stable than wall-clock timing,

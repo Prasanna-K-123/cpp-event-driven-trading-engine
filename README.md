@@ -1,8 +1,24 @@
 # High-Performance C++ Event-Driven Trading / Backtest Engine
 
+[![Validation](https://github.com/Prasanna-K-123/cpp-event-driven-trading-engine/actions/workflows/validation.yml/badge.svg?branch=main)](https://github.com/Prasanna-K-123/cpp-event-driven-trading-engine/actions/workflows/validation.yml)
+
 A C++20 systems project focused on mechanics quantitative developers are expected to reason about directly: deterministic event replay, price-time-priority matching, cancellation semantics, marketable limits, state invariants, reproducible benchmarking, and profiler-guided optimization.
 
 This project is deliberately **not** an alpha claim. It is an execution-systems artifact: correctness first, followed by measured optimization on a controlled workload.
+
+## Recruiter snapshot
+
+| Signal | Verified evidence |
+|---|---|
+| Matching mechanics | two-sided price-time priority, marketable limits, partial/full cancels, market orders and maker-price fills |
+| Cancellation path | live-order hash index + intrusive per-price FIFO; cancellation is **O(1) with respect to queue length after the order-ID hash lookup** |
+| Correctness | adversarial unit tests, Debug ASan/UBSan, deep-state checksum and exact 1,000,000-event deterministic replay |
+| Accepted optimization | **145.102 → 104.115 ns/event** and **140,001,502 → 100,873,271** replay instructions on the frozen historical runner/workload comparison |
+| Semantic preservation | fills, filled quantity, rejected cancels, live orders, resting quantity and final-state checksum remain identical across the accepted optimization sequence |
+
+**Direct evidence:** [`performance validation`](reference/performance_validation.json) · [`reference policy`](reference/README.md) · [`architecture`](docs/ARCHITECTURE.md) · [`benchmark protocol`](docs/BENCHMARK_PROTOCOL.md) · [`profiling methodology`](docs/PROFILING.md)
+
+Wall-clock nanoseconds are intentionally **not** a CI reproducibility gate because hosted-runner timing varies. Deterministic state outputs and replay-only Callgrind instruction evidence are the stronger stable checks.
 
 ## What is implemented
 

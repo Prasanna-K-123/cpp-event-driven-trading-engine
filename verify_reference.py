@@ -28,11 +28,17 @@ def pct_change(new: float, old: float) -> float:
 
 
 def parse_callgrind_summary(path: Path) -> int:
+    summaries: list[int] = []
     for line in path.read_text(encoding="utf-8", errors="replace").splitlines():
         if line.startswith("summary:"):
-            token = line.split(":", 1)[1].strip().split()[0]
-            return int(token)
-    raise AssertionError(f"Callgrind summary not found in {path}")
+            token = line.split(":", 1)[1].strip().split()[0].replace(",", "")
+            summaries.append(int(token))
+    if not summaries:
+        raise AssertionError(f"Callgrind summary not found in {path}")
+    collected = max(summaries)
+    if collected <= 0:
+        raise AssertionError(f"Callgrind collected no replay instructions in {path}: {summaries}")
+    return collected
 
 
 def main() -> None:

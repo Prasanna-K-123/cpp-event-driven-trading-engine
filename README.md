@@ -1,5 +1,15 @@
 # High-Performance C++ Event-Driven Trading / Backtest Engine
 
+## Evidence release — 2026-10-09
+
+[Independent differential oracle](tests/test_differential.cpp) · [Evidence review](docs/EVIDENCE_REVIEW.md)
+
+25,000 randomized events across five fixed seeds match an independently implemented vector-based matcher. Every fill, top-of-book quantity, total quantity and all 256 order-ID slots are compared after every event. Release and ASan/UBSan builds pass; local leak detection is disabled because this execution environment blocks LeakSanitizer process inspection. CI also runs the differential target through CMake/CTest.
+
+[Research scope and next extension](docs/EVIDENCE_REVIEW.md)
+
+---
+
 [![Validation](https://github.com/Prasanna-K-123/cpp-event-driven-trading-engine/actions/workflows/validation.yml/badge.svg?branch=main)](https://github.com/Prasanna-K-123/cpp-event-driven-trading-engine/actions/workflows/validation.yml)
 
 A C++20 systems project focused on mechanics quantitative developers are expected to reason about directly: deterministic event replay, price-time-priority matching, cancellation semantics, marketable limits, state invariants, reproducible benchmarking, and profiler-guided optimization.

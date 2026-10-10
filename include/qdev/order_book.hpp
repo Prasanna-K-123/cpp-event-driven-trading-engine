@@ -28,6 +28,14 @@ struct LevelState {
     std::size_t order_count{};
 };
 
+struct RestingOrder {
+    OrderId id{};
+    Side side{Side::Buy};
+    PriceTicks price_ticks{};
+    Quantity remaining{};
+    std::uint64_t arrival_sequence{};
+};
+
 class OrderBook {
 public:
     void add_limit(OrderId id, Side side, PriceTicks price_ticks, Quantity quantity,
@@ -49,6 +57,8 @@ public:
     [[nodiscard]] bool is_crossed() const noexcept;
     [[nodiscard]] const OrderState* find_order(OrderId id) const noexcept;
     [[nodiscard]] std::uint64_t state_checksum() const;
+    // Canonical arrival order for a portable recovery image, not hash-map order.
+    [[nodiscard]] std::vector<RestingOrder> resting_orders() const;
 
 private:
     using BidMap = std::map<PriceTicks, LevelState, std::greater<PriceTicks>>;

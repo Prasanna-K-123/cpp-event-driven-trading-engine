@@ -28,6 +28,9 @@ public:
     [[nodiscard]] const OrderBook& book() const noexcept { return book_; }
     [[nodiscard]] const EngineStats& stats() const noexcept { return stats_; }
     [[nodiscard]] std::uint64_t state_checksum() const noexcept;
+    [[nodiscard]] std::vector<std::uint8_t> snapshot() const;
+    // Factory: malformed images cannot mutate an existing engine.
+    [[nodiscard]] static EventEngine restore(const std::vector<std::uint8_t>& bytes);
 
 private:
     OrderBook book_;

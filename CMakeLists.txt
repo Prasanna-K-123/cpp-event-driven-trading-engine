@@ -12,6 +12,7 @@ option(QDEV_CALLGRIND "Build the replay-only Callgrind profiling executable" OFF
 add_library(qdev_engine
     src/order_book.cpp
     src/engine.cpp
+    src/snapshot.cpp
 )
 target_include_directories(qdev_engine PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
 target_compile_options(qdev_engine PRIVATE
@@ -56,4 +57,9 @@ if(BUILD_TESTING)
     target_link_libraries(qdev_differential_tests PRIVATE qdev_engine)
     target_compile_options(qdev_differential_tests PRIVATE -Wall -Wextra -Wpedantic -Werror)
     add_test(NAME qdev_differential_tests COMMAND qdev_differential_tests)
+
+    add_executable(qdev_snapshot_tests tests/test_snapshot.cpp)
+    target_link_libraries(qdev_snapshot_tests PRIVATE qdev_engine)
+    target_compile_options(qdev_snapshot_tests PRIVATE -Wall -Wextra -Wpedantic -Werror)
+    add_test(NAME qdev_snapshot_tests COMMAND qdev_snapshot_tests)
 endif()

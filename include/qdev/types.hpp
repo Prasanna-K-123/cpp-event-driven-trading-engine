@@ -49,6 +49,12 @@ struct Fill {
 };
 
 inline void validate_event(const Event& event) {
+    if (event.side != Side::Buy && event.side != Side::Sell) {
+        throw std::invalid_argument("invalid event side");
+    }
+    if (event.type != EventType::Add && event.type != EventType::Cancel && event.type != EventType::Market) {
+        throw std::invalid_argument("invalid event type");
+    }
     if (event.quantity <= 0) {
         throw std::invalid_argument("event quantity must be positive");
     }

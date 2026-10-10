@@ -1,11 +1,26 @@
 #include "qdev/order_book.hpp"
 
 #include <algorithm>
+
+#include <algorithm>
 #include <stdexcept>
 #include <tuple>
 #include <vector>
 
 namespace qdev {
+
+std::vector<RestingOrder> OrderBook::resting_orders() const {
+    std::vector<RestingOrder> result;
+    result.reserve(orders_.size());
+    for (const auto& [id, order] : orders_) {
+        result.push_back({id, order.side, order.price_ticks, order.remaining, order.arrival_sequence});
+    }
+    std::sort(result.begin(), result.end(), [](const auto& a, const auto& b) {
+        return a.arrival_sequence < b.arrival_sequence ||
+               (a.arrival_sequence == b.arrival_sequence && a.id < b.id);
+    });
+    return result;
+}
 
 namespace {
 

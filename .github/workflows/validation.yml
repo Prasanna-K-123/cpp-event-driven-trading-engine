@@ -22,6 +22,8 @@ jobs:
         run: cmake --build build --parallel 2
       - name: Unit and invariant tests
         run: ctest --test-dir build --output-on-failure
+      - name: Independent portable snapshot/CRC fixture
+        run: python3 verify_snapshot_fixture.py --exe build/qdev_snapshot_tests
       - name: Sanitizer configure/build/test
         run: |
           cmake -S . -B build-sanitize -DCMAKE_BUILD_TYPE=Debug -DQDEV_SANITIZE=ON
@@ -87,4 +89,5 @@ jobs:
             results/callgrind.txt
             results/callgrind_stderr.txt
             results/environment.txt
+            reference/recovery/fixture.hex
           retention-days: 30

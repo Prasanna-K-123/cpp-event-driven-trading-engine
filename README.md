@@ -1,5 +1,9 @@
 # High-Performance C++ Event-Driven Trading / Backtest Engine
 
+## Validated snapshot recovery — October 10, 2026
+
+A new portable image/restore API preserves full order state, FIFO and sequence/time guards. **685 restores across 25,000 events** matched uninterrupted replay, with 1,304 bit flips, 163 truncation prefixes and eight resealed malformed structures rejected. An independent Python decoder checks the byte format and standard CRC. [Protocol, evidence and explicit durability limits](docs/RECOVERY_REVIEW.md). This is an in-memory recovery image, not a durable exchange service.
+
 ## Evidence release — 2026-10-09
 
 [Independent differential oracle](tests/test_differential.cpp) · [Evidence review](docs/EVIDENCE_REVIEW.md)

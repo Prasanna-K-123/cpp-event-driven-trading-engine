@@ -47,6 +47,11 @@ Record encode(const Event& e, std::uint64_t index, std::uint32_t previous) {
     put(r,72,previous,4); put(r,76,crc(r),4);
     return r;
 }
+void check_event_bounds(const Event& e) {
+    validate_event(e);
+    if(e.quantity>FileJournal::max_event_quantity)
+        throw std::length_error("journal event quantity limit exceeded");
+}
 Event decode(const Record& r, std::uint64_t index, std::uint32_t previous) {
     if(!std::equal(magic.begin(),magic.end(),r.begin()) || get(r,8,4)!=1 ||
        get(r,12,4)!=r.size() || get(r,16,8)!=index ||
@@ -54,9 +59,11 @@ Event decode(const Record& r, std::uint64_t index, std::uint32_t previous) {
         throw std::invalid_argument("invalid journal frame/chain/CRC");
     for(std::size_t i=42;i<48;++i) if(r[i]!=0)
         throw std::invalid_argument("nonzero journal reserved field");
-    return {get(r,24,8),get(r,32,8),static_cast<EventType>(r[40]),
+    const Event event{get(r,24,8),get(r,32,8),static_cast<EventType>(r[40]),
             static_cast<Side>(r[41]),get(r,48,8),
             std::bit_cast<std::int64_t>(get(r,56,8)),std::bit_cast<std::int64_t>(get(r,64,8))};
+    check_event_bounds(event);
+    return event;
 }
 }
 
@@ -148,6 +155,7 @@ std::uint64_t FileJournal::append(const Event& event) {
     if(::getpid()!=owner_pid_) throw std::logic_error("journal handle inherited across fork");
     if(poisoned_) throw std::logic_error("journal I/O uncertain; close and recover before retry");
     if(records_>=max_records) throw std::length_error("journal record limit reached");
+    check_event_bounds(event);
     // Validate/process a private candidate before any write; invalid events
     // leave both committed state and file unchanged. This favors auditability
     // over throughput; it is not on the original low-latency benchmark path.

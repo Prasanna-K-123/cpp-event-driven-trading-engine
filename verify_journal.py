@@ -126,8 +126,8 @@ def verify(study, executable, replay=None):
         unit = subprocess.check_output([str(executable)], text=True)
         actual = json.loads(unit.split('JOURNAL_UNIT_JSON=')[1])
         require(actual == dict(single_bit_refusals=1920,truncation_prefixes=240,
-                               resealed_invalid_records=12,splice_refusals=3,
-                               io_fault_scenarios=14,invalid_append_scenarios=6,
+                               resealed_invalid_records=13,splice_refusals=3,
+                               io_fault_scenarios=14,invalid_append_scenarios=8,
                                path_and_size_scenarios=5,exclusive_lock=True), 'unit case counts')
     else:
         actual = None

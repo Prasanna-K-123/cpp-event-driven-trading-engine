@@ -1,7 +1,7 @@
 {
   "base_commit": "bd1c9c08505a7382a772f65d993f1b3e40843316",
-  "registration_status": "PRE_EXECUTION_METHOD_REGISTRATION",
-  "method_sha256": {
+  "initial_registration_commit": "0fb303eeee20085f01499d8cb218113929ae9c5f",
+  "initial_method_sha256": {
     "include/qdev/journal.hpp": "ceb8d301aa7e5ec3bc9d32807080c5e11e5f927c0e269f8eef0b7384f435e4e6",
     "src/journal.cpp": "edcbbfa4c4a2d1c459ad8f2a948cddff261863fdd2ec0ac0ed1c3d9f15ae25d1",
     "tests/test_journal.cpp": "3c82273bc2d9f0ae69b2b80592d71bfcad562bc02d1533b9b4440f1bb98ae928",
@@ -12,6 +12,27 @@
     "reference/journal/PROTOCOL.json": "684dc92feebeb177fc548c7ba43f89653408754e213ea7d28b9aa617121700e7",
     "reference/journal/fixture.hex": "4d6adce47adeb35b6c287ef272d807f5f5cbb883dc1456146b96790ee215dfc5"
   },
-  "registered_commit": "recorded after actual successful commit",
+  "method_sha256": {
+    "include/qdev/journal.hpp": "56159e8b5aad934b169422cbd7ae9a7f7ce463112790861e4db2a71543133d90",
+    "src/journal.cpp": "06482c926f5ef3898bc803c9e667efde6843e27f09f81d244fe99e0ff802867f",
+    "tests/test_journal.cpp": "a97c89935ae24f958f7d9d7424308583747757d47e7226a7dea1bbbb4a03b596",
+    "benchmark/journal_study.cpp": "77125f216beec25120fbc4a7a14b756a87140e306915841ce62596a460e9fedb",
+    "verify_journal.py": "5860b933eb3ec383097e6e250bfb8e7d420f0165ada951806e7d7b0ce9ad6ab1",
+    ".github/workflows/journal.yml": "da6187074c5a581e157a570771dab5bcb560d150d34f6b5d2d05435d3f8e2604",
+    "CMakeLists.txt": "cc92076ca2ccf50eb307d355c18183866ae414aa8ab3ef14e4c2a9e5c74c68a9",
+    "reference/journal/PROTOCOL.json": "794f23a2a22516c9c6b337fe9b67a8a32b23bcc14e1d7b0b9e484909e7f2b60b",
+    "reference/journal/fixture.hex": "4d6adce47adeb35b6c287ef272d807f5f5cbb883dc1456146b96790ee215dfc5"
+  },
+  "status": "BOUNDED_QUANTITY_SAFETY_AMENDMENT_AFTER_FIXED_STUDY",
+  "preserved_study_sha256": {
+    "reference/journal/study/events.csv": "87dd49f256ddb9e435c19e509d3e885beb11dda62282362c39ae29c8b9d0b0ba",
+    "reference/journal/study/states.csv": "fc6c4abedc7ffd2b275b62330ec7b50b9787696a86c2e569ae3fda291ee409ff",
+    "reference/journal/study/journal_41.bin": "dacbcd71157b6b820a5ffeccd3571b53d9a2070dbf0ceebc05e5974c0a9131b3",
+    "reference/journal/study/journal_7.bin": "d505d10f585d31b1488475b4e15041ef5f5db4058917305faa1af1751939662f",
+    "reference/journal/study/journal_20261011.bin": "a47d733529f071284edad70ffff6262be338ab3fe3f4bbab93be636a4b0a2ad2",
+    "reference/journal/study/crashes.csv": "3062927183cd094008949012d90b57e624018e2dd4e7a7b8873f141cfbcb3e2c",
+    "reference/journal/study/summary.json": "c0d9ce37c122c51dfaf93c10b79dfef8ef98a39eaa1baee3fef7bc8123a8fa54",
+    "reference/journal/study/journal_2027.bin": "e4cad484652f47c51ebbd0faf404e757b216b1508d3f52afcb7ae27d10b3d2c9"
+  },
   "original_guard_scope": "all26 original blobs except CMakeLists.txt and README.md preserved byte-for-byte; old engine/benchmark/tests/workflow/fixtures unchanged"
 }

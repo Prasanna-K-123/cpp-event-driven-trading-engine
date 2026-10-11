@@ -17,7 +17,9 @@
     "max_file_bytes": 8000000,
     "inherited_fork_handle": "refused",
     "symlink_final_component": "refused",
-    "thread_safety": "caller serializes access"
+    "thread_safety": "caller serializes access",
+    "max_event_quantity": 1000000000,
+    "bounded_total_quantity": 100000000000000
   },
   "fixed_study": {
     "seeds": [
@@ -57,10 +59,10 @@
   "unit_budgets": {
     "bit_flips": 1920,
     "truncation_prefixes": 240,
-    "resealed_bad_structure": 12,
+    "resealed_bad_structure": 13,
     "splice_cases": 3,
     "io_scenarios": 14,
-    "invalid_append": 6,
+    "invalid_append": 8,
     "paths_and_size": 5
   },
   "io_faults": [
@@ -137,5 +139,13 @@
     "high availability",
     "latency or universal performance record"
   ],
-  "result_rule": "All fixed cases executed; any failure aborts visible with amendment before rerun. No case deletion, seed or scope retuning based on outcomes. CRC and I/O checks are automated evidence, not practitioner review."
+  "result_rule": "All fixed cases executed; any failure aborts visible with amendment before rerun. No case deletion, seed or scope retuning based on outcomes. CRC and I/O checks are automated evidence, not practitioner review.",
+  "amendments": [
+    {
+      "initial_registration_commit": "0fb303eeee20085f01499d8cb218113929ae9c5f",
+      "timing": "After fixed local study passed, before main/recruiter publication. Original source safety review found unbounded quantities could overflow original engine totals.",
+      "change": "Journal-specific 1e9 positive event quantity ceiling checked on append and decoded recovery. With100000 records, total input/filled/resting quantities <=1e14. Two new invalid append cases and one resealed oversized record. Original matcher/source remain byte-identical.",
+      "study_impact": "All original 4096 event quantities are1..100; all8 completed study files and budgets/seeds/event order preserved byte-identically. No deletion or outcome-dependent retuning."
+    }
+  ]
 }

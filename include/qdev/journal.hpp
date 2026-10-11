@@ -27,6 +27,9 @@ class FileJournal {
 public:
     static constexpr std::size_t record_bytes = 80;
     static constexpr std::uint64_t max_records = 100000;
+    // max_records * max_event_quantity bounds all accumulated quantities far
+    // below signed/unsigned 64-bit limits without changing the original matcher.
+    static constexpr Quantity max_event_quantity = 1000000000;
     explicit FileJournal(const std::filesystem::path& path,
                          std::shared_ptr<JournalIo> io = std::make_shared<JournalIo>());
     ~FileJournal();

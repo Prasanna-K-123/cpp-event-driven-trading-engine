@@ -94,7 +94,9 @@ int main(int argc,char** argv) {
                 {101,31,qdev::EventType::Add,qdev::Side::Sell,2,101,1},
                 {101,31,qdev::EventType::Market,qdev::Side::Buy,0,0,0},
                 {101,31,static_cast<qdev::EventType>(255),qdev::Side::Buy,0,0,1},
-                {101,31,qdev::EventType::Market,static_cast<qdev::Side>(255),0,0,1}})
+                {101,31,qdev::EventType::Market,static_cast<qdev::Side>(255),0,0,1},
+                {101,31,qdev::EventType::Market,qdev::Side::Buy,0,0,qdev::FileJournal::max_event_quantity+1},
+                {101,31,qdev::EventType::Market,qdev::Side::Buy,0,0,std::numeric_limits<qdev::Quantity>::max()}})
                 refused([&]{j.append(e);});
             require(read(p)==before && j.engine().snapshot()==image && !j.poisoned(),"invalid event changed committed state");
             j.append({102,40,qdev::EventType::Market,qdev::Side::Buy,0,0,2});
@@ -112,7 +114,7 @@ int main(int argc,char** argv) {
         }
         // Malformed records with recomputed valid CRCs still fail structure or engine rules.
         std::uint64_t forged=0;
-        for(int kind=0;kind<12;++kind) {
+        for(int kind=0;kind<13;++kind) {
             auto b=bytes;
             switch(kind) {
                 case 0:b[0]='X';break;
@@ -127,6 +129,7 @@ int main(int argc,char** argv) {
                 case 9:std::fill(b.begin()+64,b.begin()+72,0);break;
                 case 10:b[80+39]=10;break;
                 case 11:b[80+31]=99;break;
+                case 12:std::fill(b.begin()+64,b.begin()+72,255);b[64]=127;break;
             }
             reseal(b);write(p,b);refused([&]{qdev::FileJournal j(p);});require(read(p)==b,"forged record modified");++forged;
         }
@@ -176,7 +179,7 @@ int main(int argc,char** argv) {
         refused([&]{qdev::FileJournal j(tmp.dir/"x",nullptr);});
         std::cout<<"JOURNAL_UNIT_JSON={\"single_bit_refusals\":"<<bits<<",\"truncation_prefixes\":"<<prefixes
             <<",\"resealed_invalid_records\":"<<forged<<",\"splice_refusals\":"<<chain_cases<<",\"io_fault_scenarios\":"<<faults
-            <<",\"invalid_append_scenarios\":6,\"path_and_size_scenarios\":5,\"exclusive_lock\":true}\n";
+            <<",\"invalid_append_scenarios\":8,\"path_and_size_scenarios\":5,\"exclusive_lock\":true}\n";
         return EXIT_SUCCESS;
     } catch(const std::exception& e){std::cerr<<e.what()<<'\n';return EXIT_FAILURE;}
 }

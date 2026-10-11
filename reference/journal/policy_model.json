@@ -1,0 +1,794 @@
+[
+  {
+    "policy": "write_only_ack",
+    "written": 0,
+    "durable": 0,
+    "ack": 0,
+    "acknowledged_loss": 0,
+    "unacknowledged": 0
+  },
+  {
+    "policy": "per_record_sync_ack",
+    "written": 0,
+    "durable": 0,
+    "ack": 0,
+    "acknowledged_loss": 0,
+    "unacknowledged": 0
+  },
+  {
+    "policy": "group_16_sync_ack",
+    "written": 0,
+    "durable": 0,
+    "ack": 0,
+    "acknowledged_loss": 0,
+    "unacknowledged": 0
+  },
+  {
+    "policy": "write_only_ack",
+    "written": 1,
+    "durable": 0,
+    "ack": 1,
+    "acknowledged_loss": 1,
+    "unacknowledged": 0
+  },
+  {
+    "policy": "per_record_sync_ack",
+    "written": 1,
+    "durable": 1,
+    "ack": 1,
+    "acknowledged_loss": 0,
+    "unacknowledged": 0
+  },
+  {
+    "policy": "group_16_sync_ack",
+    "written": 1,
+    "durable": 0,
+    "ack": 0,
+    "acknowledged_loss": 0,
+    "unacknowledged": 1
+  },
+  {
+    "policy": "write_only_ack",
+    "written": 2,
+    "durable": 0,
+    "ack": 2,
+    "acknowledged_loss": 2,
+    "unacknowledged": 0
+  },
+  {
+    "policy": "per_record_sync_ack",
+    "written": 2,
+    "durable": 2,
+    "ack": 2,
+    "acknowledged_loss": 0,
+    "unacknowledged": 0
+  },
+  {
+    "policy": "group_16_sync_ack",
+    "written": 2,
+    "durable": 0,
+    "ack": 0,
+    "acknowledged_loss": 0,
+    "unacknowledged": 2
+  },
+  {
+    "policy": "write_only_ack",
+    "written": 3,
+    "durable": 0,
+    "ack": 3,
+    "acknowledged_loss": 3,
+    "unacknowledged": 0
+  },
+  {
+    "policy": "per_record_sync_ack",
+    "written": 3,
+    "durable": 3,
+    "ack": 3,
+    "acknowledged_loss": 0,
+    "unacknowledged": 0
+  },
+  {
+    "policy": "group_16_sync_ack",
+    "written": 3,
+    "durable": 0,
+    "ack": 0,
+    "acknowledged_loss": 0,
+    "unacknowledged": 3
+  },
+  {
+    "policy": "write_only_ack",
+    "written": 4,
+    "durable": 0,
+    "ack": 4,
+    "acknowledged_loss": 4,
+    "unacknowledged": 0
+  },
+  {
+    "policy": "per_record_sync_ack",
+    "written": 4,
+    "durable": 4,
+    "ack": 4,
+    "acknowledged_loss": 0,
+    "unacknowledged": 0
+  },
+  {
+    "policy": "group_16_sync_ack",
+    "written": 4,
+    "durable": 0,
+    "ack": 0,
+    "acknowledged_loss": 0,
+    "unacknowledged": 4
+  },
+  {
+    "policy": "write_only_ack",
+    "written": 5,
+    "durable": 0,
+    "ack": 5,
+    "acknowledged_loss": 5,
+    "unacknowledged": 0
+  },
+  {
+    "policy": "per_record_sync_ack",
+    "written": 5,
+    "durable": 5,
+    "ack": 5,
+    "acknowledged_loss": 0,
+    "unacknowledged": 0
+  },
+  {
+    "policy": "group_16_sync_ack",
+    "written": 5,
+    "durable": 0,
+    "ack": 0,
+    "acknowledged_loss": 0,
+    "unacknowledged": 5
+  },
+  {
+    "policy": "write_only_ack",
+    "written": 6,
+    "durable": 0,
+    "ack": 6,
+    "acknowledged_loss": 6,
+    "unacknowledged": 0
+  },
+  {
+    "policy": "per_record_sync_ack",
+    "written": 6,
+    "durable": 6,
+    "ack": 6,
+    "acknowledged_loss": 0,
+    "unacknowledged": 0
+  },
+  {
+    "policy": "group_16_sync_ack",
+    "written": 6,
+    "durable": 0,
+    "ack": 0,
+    "acknowledged_loss": 0,
+    "unacknowledged": 6
+  },
+  {
+    "policy": "write_only_ack",
+    "written": 7,
+    "durable": 0,
+    "ack": 7,
+    "acknowledged_loss": 7,
+    "unacknowledged": 0
+  },
+  {
+    "policy": "per_record_sync_ack",
+    "written": 7,
+    "durable": 7,
+    "ack": 7,
+    "acknowledged_loss": 0,
+    "unacknowledged": 0
+  },
+  {
+    "policy": "group_16_sync_ack",
+    "written": 7,
+    "durable": 0,
+    "ack": 0,
+    "acknowledged_loss": 0,
+    "unacknowledged": 7
+  },
+  {
+    "policy": "write_only_ack",
+    "written": 8,
+    "durable": 0,
+    "ack": 8,
+    "acknowledged_loss": 8,
+    "unacknowledged": 0
+  },
+  {
+    "policy": "per_record_sync_ack",
+    "written": 8,
+    "durable": 8,
+    "ack": 8,
+    "acknowledged_loss": 0,
+    "unacknowledged": 0
+  },
+  {
+    "policy": "group_16_sync_ack",
+    "written": 8,
+    "durable": 0,
+    "ack": 0,
+    "acknowledged_loss": 0,
+    "unacknowledged": 8
+  },
+  {
+    "policy": "write_only_ack",
+    "written": 9,
+    "durable": 0,
+    "ack": 9,
+    "acknowledged_loss": 9,
+    "unacknowledged": 0
+  },
+  {
+    "policy": "per_record_sync_ack",
+    "written": 9,
+    "durable": 9,
+    "ack": 9,
+    "acknowledged_loss": 0,
+    "unacknowledged": 0
+  },
+  {
+    "policy": "group_16_sync_ack",
+    "written": 9,
+    "durable": 0,
+    "ack": 0,
+    "acknowledged_loss": 0,
+    "unacknowledged": 9
+  },
+  {
+    "policy": "write_only_ack",
+    "written": 10,
+    "durable": 0,
+    "ack": 10,
+    "acknowledged_loss": 10,
+    "unacknowledged": 0
+  },
+  {
+    "policy": "per_record_sync_ack",
+    "written": 10,
+    "durable": 10,
+    "ack": 10,
+    "acknowledged_loss": 0,
+    "unacknowledged": 0
+  },
+  {
+    "policy": "group_16_sync_ack",
+    "written": 10,
+    "durable": 0,
+    "ack": 0,
+    "acknowledged_loss": 0,
+    "unacknowledged": 10
+  },
+  {
+    "policy": "write_only_ack",
+    "written": 11,
+    "durable": 0,
+    "ack": 11,
+    "acknowledged_loss": 11,
+    "unacknowledged": 0
+  },
+  {
+    "policy": "per_record_sync_ack",
+    "written": 11,
+    "durable": 11,
+    "ack": 11,
+    "acknowledged_loss": 0,
+    "unacknowledged": 0
+  },
+  {
+    "policy": "group_16_sync_ack",
+    "written": 11,
+    "durable": 0,
+    "ack": 0,
+    "acknowledged_loss": 0,
+    "unacknowledged": 11
+  },
+  {
+    "policy": "write_only_ack",
+    "written": 12,
+    "durable": 0,
+    "ack": 12,
+    "acknowledged_loss": 12,
+    "unacknowledged": 0
+  },
+  {
+    "policy": "per_record_sync_ack",
+    "written": 12,
+    "durable": 12,
+    "ack": 12,
+    "acknowledged_loss": 0,
+    "unacknowledged": 0
+  },
+  {
+    "policy": "group_16_sync_ack",
+    "written": 12,
+    "durable": 0,
+    "ack": 0,
+    "acknowledged_loss": 0,
+    "unacknowledged": 12
+  },
+  {
+    "policy": "write_only_ack",
+    "written": 13,
+    "durable": 0,
+    "ack": 13,
+    "acknowledged_loss": 13,
+    "unacknowledged": 0
+  },
+  {
+    "policy": "per_record_sync_ack",
+    "written": 13,
+    "durable": 13,
+    "ack": 13,
+    "acknowledged_loss": 0,
+    "unacknowledged": 0
+  },
+  {
+    "policy": "group_16_sync_ack",
+    "written": 13,
+    "durable": 0,
+    "ack": 0,
+    "acknowledged_loss": 0,
+    "unacknowledged": 13
+  },
+  {
+    "policy": "write_only_ack",
+    "written": 14,
+    "durable": 0,
+    "ack": 14,
+    "acknowledged_loss": 14,
+    "unacknowledged": 0
+  },
+  {
+    "policy": "per_record_sync_ack",
+    "written": 14,
+    "durable": 14,
+    "ack": 14,
+    "acknowledged_loss": 0,
+    "unacknowledged": 0
+  },
+  {
+    "policy": "group_16_sync_ack",
+    "written": 14,
+    "durable": 0,
+    "ack": 0,
+    "acknowledged_loss": 0,
+    "unacknowledged": 14
+  },
+  {
+    "policy": "write_only_ack",
+    "written": 15,
+    "durable": 0,
+    "ack": 15,
+    "acknowledged_loss": 15,
+    "unacknowledged": 0
+  },
+  {
+    "policy": "per_record_sync_ack",
+    "written": 15,
+    "durable": 15,
+    "ack": 15,
+    "acknowledged_loss": 0,
+    "unacknowledged": 0
+  },
+  {
+    "policy": "group_16_sync_ack",
+    "written": 15,
+    "durable": 0,
+    "ack": 0,
+    "acknowledged_loss": 0,
+    "unacknowledged": 15
+  },
+  {
+    "policy": "write_only_ack",
+    "written": 16,
+    "durable": 0,
+    "ack": 16,
+    "acknowledged_loss": 16,
+    "unacknowledged": 0
+  },
+  {
+    "policy": "per_record_sync_ack",
+    "written": 16,
+    "durable": 16,
+    "ack": 16,
+    "acknowledged_loss": 0,
+    "unacknowledged": 0
+  },
+  {
+    "policy": "group_16_sync_ack",
+    "written": 16,
+    "durable": 16,
+    "ack": 16,
+    "acknowledged_loss": 0,
+    "unacknowledged": 0
+  },
+  {
+    "policy": "write_only_ack",
+    "written": 17,
+    "durable": 0,
+    "ack": 17,
+    "acknowledged_loss": 17,
+    "unacknowledged": 0
+  },
+  {
+    "policy": "per_record_sync_ack",
+    "written": 17,
+    "durable": 17,
+    "ack": 17,
+    "acknowledged_loss": 0,
+    "unacknowledged": 0
+  },
+  {
+    "policy": "group_16_sync_ack",
+    "written": 17,
+    "durable": 16,
+    "ack": 16,
+    "acknowledged_loss": 0,
+    "unacknowledged": 1
+  },
+  {
+    "policy": "write_only_ack",
+    "written": 18,
+    "durable": 0,
+    "ack": 18,
+    "acknowledged_loss": 18,
+    "unacknowledged": 0
+  },
+  {
+    "policy": "per_record_sync_ack",
+    "written": 18,
+    "durable": 18,
+    "ack": 18,
+    "acknowledged_loss": 0,
+    "unacknowledged": 0
+  },
+  {
+    "policy": "group_16_sync_ack",
+    "written": 18,
+    "durable": 16,
+    "ack": 16,
+    "acknowledged_loss": 0,
+    "unacknowledged": 2
+  },
+  {
+    "policy": "write_only_ack",
+    "written": 19,
+    "durable": 0,
+    "ack": 19,
+    "acknowledged_loss": 19,
+    "unacknowledged": 0
+  },
+  {
+    "policy": "per_record_sync_ack",
+    "written": 19,
+    "durable": 19,
+    "ack": 19,
+    "acknowledged_loss": 0,
+    "unacknowledged": 0
+  },
+  {
+    "policy": "group_16_sync_ack",
+    "written": 19,
+    "durable": 16,
+    "ack": 16,
+    "acknowledged_loss": 0,
+    "unacknowledged": 3
+  },
+  {
+    "policy": "write_only_ack",
+    "written": 20,
+    "durable": 0,
+    "ack": 20,
+    "acknowledged_loss": 20,
+    "unacknowledged": 0
+  },
+  {
+    "policy": "per_record_sync_ack",
+    "written": 20,
+    "durable": 20,
+    "ack": 20,
+    "acknowledged_loss": 0,
+    "unacknowledged": 0
+  },
+  {
+    "policy": "group_16_sync_ack",
+    "written": 20,
+    "durable": 16,
+    "ack": 16,
+    "acknowledged_loss": 0,
+    "unacknowledged": 4
+  },
+  {
+    "policy": "write_only_ack",
+    "written": 21,
+    "durable": 0,
+    "ack": 21,
+    "acknowledged_loss": 21,
+    "unacknowledged": 0
+  },
+  {
+    "policy": "per_record_sync_ack",
+    "written": 21,
+    "durable": 21,
+    "ack": 21,
+    "acknowledged_loss": 0,
+    "unacknowledged": 0
+  },
+  {
+    "policy": "group_16_sync_ack",
+    "written": 21,
+    "durable": 16,
+    "ack": 16,
+    "acknowledged_loss": 0,
+    "unacknowledged": 5
+  },
+  {
+    "policy": "write_only_ack",
+    "written": 22,
+    "durable": 0,
+    "ack": 22,
+    "acknowledged_loss": 22,
+    "unacknowledged": 0
+  },
+  {
+    "policy": "per_record_sync_ack",
+    "written": 22,
+    "durable": 22,
+    "ack": 22,
+    "acknowledged_loss": 0,
+    "unacknowledged": 0
+  },
+  {
+    "policy": "group_16_sync_ack",
+    "written": 22,
+    "durable": 16,
+    "ack": 16,
+    "acknowledged_loss": 0,
+    "unacknowledged": 6
+  },
+  {
+    "policy": "write_only_ack",
+    "written": 23,
+    "durable": 0,
+    "ack": 23,
+    "acknowledged_loss": 23,
+    "unacknowledged": 0
+  },
+  {
+    "policy": "per_record_sync_ack",
+    "written": 23,
+    "durable": 23,
+    "ack": 23,
+    "acknowledged_loss": 0,
+    "unacknowledged": 0
+  },
+  {
+    "policy": "group_16_sync_ack",
+    "written": 23,
+    "durable": 16,
+    "ack": 16,
+    "acknowledged_loss": 0,
+    "unacknowledged": 7
+  },
+  {
+    "policy": "write_only_ack",
+    "written": 24,
+    "durable": 0,
+    "ack": 24,
+    "acknowledged_loss": 24,
+    "unacknowledged": 0
+  },
+  {
+    "policy": "per_record_sync_ack",
+    "written": 24,
+    "durable": 24,
+    "ack": 24,
+    "acknowledged_loss": 0,
+    "unacknowledged": 0
+  },
+  {
+    "policy": "group_16_sync_ack",
+    "written": 24,
+    "durable": 16,
+    "ack": 16,
+    "acknowledged_loss": 0,
+    "unacknowledged": 8
+  },
+  {
+    "policy": "write_only_ack",
+    "written": 25,
+    "durable": 0,
+    "ack": 25,
+    "acknowledged_loss": 25,
+    "unacknowledged": 0
+  },
+  {
+    "policy": "per_record_sync_ack",
+    "written": 25,
+    "durable": 25,
+    "ack": 25,
+    "acknowledged_loss": 0,
+    "unacknowledged": 0
+  },
+  {
+    "policy": "group_16_sync_ack",
+    "written": 25,
+    "durable": 16,
+    "ack": 16,
+    "acknowledged_loss": 0,
+    "unacknowledged": 9
+  },
+  {
+    "policy": "write_only_ack",
+    "written": 26,
+    "durable": 0,
+    "ack": 26,
+    "acknowledged_loss": 26,
+    "unacknowledged": 0
+  },
+  {
+    "policy": "per_record_sync_ack",
+    "written": 26,
+    "durable": 26,
+    "ack": 26,
+    "acknowledged_loss": 0,
+    "unacknowledged": 0
+  },
+  {
+    "policy": "group_16_sync_ack",
+    "written": 26,
+    "durable": 16,
+    "ack": 16,
+    "acknowledged_loss": 0,
+    "unacknowledged": 10
+  },
+  {
+    "policy": "write_only_ack",
+    "written": 27,
+    "durable": 0,
+    "ack": 27,
+    "acknowledged_loss": 27,
+    "unacknowledged": 0
+  },
+  {
+    "policy": "per_record_sync_ack",
+    "written": 27,
+    "durable": 27,
+    "ack": 27,
+    "acknowledged_loss": 0,
+    "unacknowledged": 0
+  },
+  {
+    "policy": "group_16_sync_ack",
+    "written": 27,
+    "durable": 16,
+    "ack": 16,
+    "acknowledged_loss": 0,
+    "unacknowledged": 11
+  },
+  {
+    "policy": "write_only_ack",
+    "written": 28,
+    "durable": 0,
+    "ack": 28,
+    "acknowledged_loss": 28,
+    "unacknowledged": 0
+  },
+  {
+    "policy": "per_record_sync_ack",
+    "written": 28,
+    "durable": 28,
+    "ack": 28,
+    "acknowledged_loss": 0,
+    "unacknowledged": 0
+  },
+  {
+    "policy": "group_16_sync_ack",
+    "written": 28,
+    "durable": 16,
+    "ack": 16,
+    "acknowledged_loss": 0,
+    "unacknowledged": 12
+  },
+  {
+    "policy": "write_only_ack",
+    "written": 29,
+    "durable": 0,
+    "ack": 29,
+    "acknowledged_loss": 29,
+    "unacknowledged": 0
+  },
+  {
+    "policy": "per_record_sync_ack",
+    "written": 29,
+    "durable": 29,
+    "ack": 29,
+    "acknowledged_loss": 0,
+    "unacknowledged": 0
+  },
+  {
+    "policy": "group_16_sync_ack",
+    "written": 29,
+    "durable": 16,
+    "ack": 16,
+    "acknowledged_loss": 0,
+    "unacknowledged": 13
+  },
+  {
+    "policy": "write_only_ack",
+    "written": 30,
+    "durable": 0,
+    "ack": 30,
+    "acknowledged_loss": 30,
+    "unacknowledged": 0
+  },
+  {
+    "policy": "per_record_sync_ack",
+    "written": 30,
+    "durable": 30,
+    "ack": 30,
+    "acknowledged_loss": 0,
+    "unacknowledged": 0
+  },
+  {
+    "policy": "group_16_sync_ack",
+    "written": 30,
+    "durable": 16,
+    "ack": 16,
+    "acknowledged_loss": 0,
+    "unacknowledged": 14
+  },
+  {
+    "policy": "write_only_ack",
+    "written": 31,
+    "durable": 0,
+    "ack": 31,
+    "acknowledged_loss": 31,
+    "unacknowledged": 0
+  },
+  {
+    "policy": "per_record_sync_ack",
+    "written": 31,
+    "durable": 31,
+    "ack": 31,
+    "acknowledged_loss": 0,
+    "unacknowledged": 0
+  },
+  {
+    "policy": "group_16_sync_ack",
+    "written": 31,
+    "durable": 16,
+    "ack": 16,
+    "acknowledged_loss": 0,
+    "unacknowledged": 15
+  },
+  {
+    "policy": "write_only_ack",
+    "written": 32,
+    "durable": 0,
+    "ack": 32,
+    "acknowledged_loss": 32,
+    "unacknowledged": 0
+  },
+  {
+    "policy": "per_record_sync_ack",
+    "written": 32,
+    "durable": 32,
+    "ack": 32,
+    "acknowledged_loss": 0,
+    "unacknowledged": 0
+  },
+  {
+    "policy": "group_16_sync_ack",
+    "written": 32,
+    "durable": 32,
+    "ack": 32,
+    "acknowledged_loss": 0,
+    "unacknowledged": 0
+  }
+]

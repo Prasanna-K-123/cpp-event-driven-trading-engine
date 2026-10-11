@@ -1,5 +1,12 @@
 # High-Performance C++ Event-Driven Trading / Backtest Engine
 
+## Registered filesystem journal — October 11, 2026
+
+A bounded Linux journal now appends and synchronizes actual event records, validates chained CRCs, refuses uncertain I/O and recovers explicit incomplete tails. **4,096 journaled events, 64 reopens and 288 controlled SIGKILL cases** matched the fixed contract. An independent Python vector matcher and byte decoder verify all recorded inputs and recovery states; **1,920 bit flips**, 13 resealed invalid records and 14 I/O fault scenarios are checked. [Full acknowledgment/recovery contract, evidence, amendment and limitations](docs/FILESYSTEM_JOURNAL_REVIEW.md) · [Fixed protocol](reference/journal/PROTOCOL.json) · [Immutable study](reference/journal/study/summary.json).
+
+Process kills leave the OS cache alive; physical power loss was not tested. The quantity safety amendment preserves all primary outputs. Historical matching, in-memory recovery and timing evidence below remains separate and unchanged.
+
+
 ## Validated snapshot recovery — October 10, 2026
 
 A new portable image/restore API preserves full order state, FIFO and sequence/time guards. **685 restores across 25,000 events** matched uninterrupted replay, with 1,304 bit flips, 163 truncation prefixes and eight resealed malformed structures rejected. An independent Python decoder checks the byte format and standard CRC. [Protocol, evidence and explicit durability limits](docs/RECOVERY_REVIEW.md). This is an in-memory recovery image, not a durable exchange service.

@@ -1,0 +1,13 @@
+{
+  "events": 4096,
+  "seeds": [7,41,2027,20261011],
+  "reopens": 64,
+  "process_crash_cases": 288,
+  "crash_stages": 9,
+  "replicates_per_stage": 32,
+  "fork_guards": 2,
+  "filesystem_magic_decimal": 2035054128,
+  "record_bytes": 80,
+  "mismatches": 0,
+  "actual_power_loss_tested": false
+}

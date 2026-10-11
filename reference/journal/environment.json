@@ -1,0 +1,8 @@
+{
+  "platform": "Linux-6.18.44-x86_64-with-glibc2.39",
+  "python": "3.12.14",
+  "compiler": "c++ (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0",
+  "cmake": "cmake version 3.31.6",
+  "local_sanitizer_scope": "All five executables with ASAN_OPTIONS=detect_leaks=0; remote default sanitizer steps independently checked.",
+  "primary_output_preservation": "All eight fixed-study files byte-identical before/after quantity safety amendment; second full local replay exact for seven semantic files; summary permits actual filesystem magic difference only."
+}

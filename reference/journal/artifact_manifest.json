@@ -1,0 +1,61 @@
+{
+  "files": {
+    "reference/journal/PROTOCOL.json": {
+      "bytes": 6025,
+      "sha256": "794f23a2a22516c9c6b337fe9b67a8a32b23bcc14e1d7b0b9e484909e7f2b60b"
+    },
+    "reference/journal/environment.json": {
+      "bytes": 545,
+      "sha256": "e5f1281be60965b79374be3503706ea7afa43843df7d36f607c0a6ea536eeb6c"
+    },
+    "reference/journal/fixture.hex": {
+      "bytes": 481,
+      "sha256": "4d6adce47adeb35b6c287ef272d807f5f5cbb883dc1456146b96790ee215dfc5"
+    },
+    "reference/journal/policy_model.json": {
+      "bytes": 14631,
+      "sha256": "32f68222ca06a4605987cb9ce49811e3bee96fae9bf10aba0297f1f240ec76da"
+    },
+    "reference/journal/registration_receipt.json": {
+      "bytes": 3156,
+      "sha256": "31cc79898b457c5615a3ecbee80e97e0269380af2a431b4e44b26b11b592634e"
+    },
+    "reference/journal/study/crashes.csv": {
+      "bytes": 4371,
+      "sha256": "3062927183cd094008949012d90b57e624018e2dd4e7a7b8873f141cfbcb3e2c"
+    },
+    "reference/journal/study/events.csv": {
+      "bytes": 125298,
+      "sha256": "87dd49f256ddb9e435c19e509d3e885beb11dda62282362c39ae29c8b9d0b0ba"
+    },
+    "reference/journal/study/journal_20261011.bin": {
+      "bytes": 81920,
+      "sha256": "a47d733529f071284edad70ffff6262be338ab3fe3f4bbab93be636a4b0a2ad2"
+    },
+    "reference/journal/study/journal_2027.bin": {
+      "bytes": 81920,
+      "sha256": "e4cad484652f47c51ebbd0faf404e757b216b1508d3f52afcb7ae27d10b3d2c9"
+    },
+    "reference/journal/study/journal_41.bin": {
+      "bytes": 81920,
+      "sha256": "dacbcd71157b6b820a5ffeccd3571b53d9a2070dbf0ceebc05e5974c0a9131b3"
+    },
+    "reference/journal/study/journal_7.bin": {
+      "bytes": 81920,
+      "sha256": "d505d10f585d31b1488475b4e15041ef5f5db4058917305faa1af1751939662f"
+    },
+    "reference/journal/study/states.csv": {
+      "bytes": 55042,
+      "sha256": "fc6c4abedc7ffd2b275b62330ec7b50b9787696a86c2e569ae3fda291ee409ff"
+    },
+    "reference/journal/study/summary.json": {
+      "bytes": 292,
+      "sha256": "c0d9ce37c122c51dfaf93c10b79dfef8ef98a39eaa1baee3fef7bc8123a8fa54"
+    },
+    "reference/journal/verification.json": {
+      "bytes": 516,
+      "sha256": "ba90068f69e08a61e4fcc0469ec359d8a675b6038c6e77f989d8316973211bc7"
+    }
+  },
+  "scope": "Reference identities; reproduce independent verification and all fixed study cases; filesystem magic records actual source platform."
+}

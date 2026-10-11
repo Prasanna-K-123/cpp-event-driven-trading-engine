@@ -1,0 +1,19 @@
+{
+  "abstract_policy_rows": 99,
+  "actual_power_loss_tested": false,
+  "filesystem_magic_decimal": 2035054128,
+  "independent_frames": 4096,
+  "independent_vector_oracle_states": 64,
+  "process_crash_rows": 288,
+  "reference_files_equal": true,
+  "unit": {
+    "exclusive_lock": true,
+    "invalid_append_scenarios": 8,
+    "io_fault_scenarios": 14,
+    "path_and_size_scenarios": 5,
+    "resealed_invalid_records": 13,
+    "single_bit_refusals": 1920,
+    "splice_refusals": 3,
+    "truncation_prefixes": 240
+  }
+}

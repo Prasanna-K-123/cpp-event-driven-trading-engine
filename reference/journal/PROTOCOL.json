@@ -1,0 +1,141 @@
+{
+  "registered_utc_date": "2026-10-11",
+  "base_commit": "bd1c9c08505a7382a772f65d993f1b3e40843316",
+  "scope": "Single Linux process/writer, cooperative advisory lock, trusted stable pre-existing directory, bounded local regular-file journal. Process/cache remains alive in SIGKILL tests; no actual power loss or exchange/feed claim.",
+  "format": {
+    "record_bytes": 80,
+    "magic": "QDEVREC1",
+    "version": 1,
+    "endianness": "big",
+    "layout": "magic8/version4/length4/ordinal8/timestamp8/feed_sequence8/type1/side1/reserved6/id8/signed_price8/signed_quantity8/previous_crc4/crc4",
+    "checksum": "IEEE CRC32 over first76 bytes, previous record CRC chained; accidental integrity only"
+  },
+  "ack": "Prevalidate candidate state; complete record write; successful file fsync; noexcept state install; return contiguous ordinal. Constructor syncs file and parent directory before usable handle. EINTR retried, short write/read continued, zero write refused. No I/O error returns ack; handle poisoned until close/recover.",
+  "recovery": "Read/CRC/structure/chronology validate every complete80-byte record and replay through original engine. Complete invalid record refuses without repair. Incomplete final1..79 bytes explicitly reported and ftruncate+fsync before reuse. Complete unacknowledged records may recover; full-tail deletion cannot be inferred without external high-water mark.",
+  "limits": {
+    "max_records": 100000,
+    "max_file_bytes": 8000000,
+    "inherited_fork_handle": "refused",
+    "symlink_final_component": "refused",
+    "thread_safety": "caller serializes access"
+  },
+  "fixed_study": {
+    "seeds": [
+      7,
+      41,
+      2027,
+      20261011
+    ],
+    "events_per_seed": 1024,
+    "ids": 128,
+    "reopen_every": 64,
+    "ack_checked_each_event": true,
+    "total_events": 4096,
+    "total_reopens": 64,
+    "sequences": "ordinal*3 (gaps retained)",
+    "event_rng": "std::mt19937_64 modulo fixed domains, fixed draw order in source",
+    "oracle": "canonical bytes each append vs uninterrupted engine; independent Python vector matcher/counter/FIFO serialization at all64 reopens and all4096 byte-decoded input frames"
+  },
+  "process_crashes": {
+    "stages": [
+      "before_write",
+      "partial_1",
+      "partial_7",
+      "partial_40",
+      "partial_79",
+      "after_write_before_sync",
+      "after_sync_before_apply",
+      "after_apply_before_ack",
+      "after_ack"
+    ],
+    "replicates": 32,
+    "cases": 288,
+    "readiness": "pipe notification then parent SIGKILL and waitpid; no timing guess",
+    "expected": "0-beforewrite recovers3; stages1..4 trim1/7/40/79 bytes and recover3; completewrite stages5..8 recover4 under live OS cache; not a persistence proof",
+    "fork_guards": 2
+  },
+  "unit_budgets": {
+    "bit_flips": 1920,
+    "truncation_prefixes": 240,
+    "resealed_bad_structure": 12,
+    "splice_cases": 3,
+    "io_scenarios": 14,
+    "invalid_append": 6,
+    "paths_and_size": 5
+  },
+  "io_faults": [
+    "ENOSPC after0/1/40/79 bytes",
+    "zero write after0/40 bytes",
+    "7-byte short write +3 EINTR and sync EINTR",
+    "7-byte short read +3 EINTR",
+    "append fsync EIO (full unack record retained locally)",
+    "tail truncate EIO",
+    "recovery file fsync EIO",
+    "recovery directory fsync EIO",
+    "recovery pread EIO",
+    "tail truncate3 EINTR"
+  ],
+  "alternative_policy_model": {
+    "policies": [
+      "write_only_ack",
+      "per_record_sync_ack",
+      "group_16_sync_ack"
+    ],
+    "boundaries": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32
+    ],
+    "rows": 99,
+    "assumption": "idealized fsync advances durable prefix; modeled loss discards all unsynced bytes. Does not measure real storage, batching latency, or production exactly-once."
+  },
+  "preserve": "Original engine, matching oracle, snapshot format, old test/source fixtures and reference performance bytes. Original validation workflow unchanged; CMake only appends separate Linux journal targets.",
+  "sources": [
+    "https://man7.org/linux/man-pages/man2/fsync.2.html",
+    "https://man7.org/linux/man-pages/man2/write.2.html",
+    "https://man7.org/linux/man-pages/man2/flock.2.html",
+    "https://man7.org/linux/man-pages/man2/open.2.html"
+  ],
+  "excluded": [
+    "physical power cut/reboot/kernel crash",
+    "lying storage/cache/controller guarantees",
+    "NFS/distributed locks",
+    "hostile modification/resealed CRC authentication",
+    "directory rename/unlink/hardlink races",
+    "network feed reconciliation/production exchange rules",
+    "exactly-once client outcomes/ack ledger",
+    "high availability",
+    "latency or universal performance record"
+  ],
+  "result_rule": "All fixed cases executed; any failure aborts visible with amendment before rerun. No case deletion, seed or scope retuning based on outcomes. CRC and I/O checks are automated evidence, not practitioner review."
+}

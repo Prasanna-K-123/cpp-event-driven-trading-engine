@@ -1,0 +1,38 @@
+name: Bounded Filesystem Journal Validation
+on:
+  push:
+    branches: [main, 'research/filesystem-journal-*']
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  journal:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build all Release targets
+        run: |
+          cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
+          cmake --build build --parallel 2
+      - name: All matching, snapshot and journal test executables
+        run: ctest --test-dir build --output-on-failure
+      - name: Independent historical snapshot fixture
+        run: python3 verify_snapshot_fixture.py --exe build/qdev_snapshot_tests
+      - name: Registered filesystem and SIGKILL study
+        run: ./build/qdev_journal_study results/journal-replay
+      - name: Independent journal, matching oracle and exact reference replay
+        if: ${{ hashFiles('reference/journal/study/summary.json') != '' }}
+        run: python3 verify_journal.py --exe build/qdev_journal_tests --replay results/journal-replay
+      - name: ASan and UBSan all test targets
+        run: |
+          cmake -S . -B build-sanitize -DCMAKE_BUILD_TYPE=Debug -DQDEV_SANITIZE=ON
+          cmake --build build-sanitize --parallel 2
+          ctest --test-dir build-sanitize --output-on-failure
+      - uses: actions/upload-artifact@v4
+        with:
+          name: bounded-filesystem-journal-replay
+          path: results/journal-replay
+          retention-days: 30

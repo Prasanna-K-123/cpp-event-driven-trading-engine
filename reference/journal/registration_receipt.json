@@ -1,0 +1,17 @@
+{
+  "base_commit": "bd1c9c08505a7382a772f65d993f1b3e40843316",
+  "registration_status": "PRE_EXECUTION_METHOD_REGISTRATION",
+  "method_sha256": {
+    "include/qdev/journal.hpp": "ceb8d301aa7e5ec3bc9d32807080c5e11e5f927c0e269f8eef0b7384f435e4e6",
+    "src/journal.cpp": "edcbbfa4c4a2d1c459ad8f2a948cddff261863fdd2ec0ac0ed1c3d9f15ae25d1",
+    "tests/test_journal.cpp": "3c82273bc2d9f0ae69b2b80592d71bfcad562bc02d1533b9b4440f1bb98ae928",
+    "benchmark/journal_study.cpp": "77125f216beec25120fbc4a7a14b756a87140e306915841ce62596a460e9fedb",
+    "verify_journal.py": "641a5dc12f0f88efbb2e6c379de745e7a0a257e9ea6ba91f0eeb3489ca919521",
+    ".github/workflows/journal.yml": "da6187074c5a581e157a570771dab5bcb560d150d34f6b5d2d05435d3f8e2604",
+    "CMakeLists.txt": "cc92076ca2ccf50eb307d355c18183866ae414aa8ab3ef14e4c2a9e5c74c68a9",
+    "reference/journal/PROTOCOL.json": "684dc92feebeb177fc548c7ba43f89653408754e213ea7d28b9aa617121700e7",
+    "reference/journal/fixture.hex": "4d6adce47adeb35b6c287ef272d807f5f5cbb883dc1456146b96790ee215dfc5"
+  },
+  "registered_commit": "recorded after actual successful commit",
+  "original_guard_scope": "all26 original blobs except CMakeLists.txt and README.md preserved byte-for-byte; old engine/benchmark/tests/workflow/fixtures unchanged"
+}

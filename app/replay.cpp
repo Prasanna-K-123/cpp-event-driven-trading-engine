@@ -84,7 +84,7 @@ int main(int argc, char** argv) {
     constexpr const char* header = "ts_ns,sequence,type,side,order_id,price_ticks,quantity";
     while (std::getline(in, line)) {
         ++line_number;
-        if (!line.empty() && line.back() == '\\r') line.pop_back();
+        if (!line.empty() && line.back() == '\r') line.pop_back();
         if (line.empty()) continue;  // preserve historical empty-line skip policy
         if (first && line == header) {
             first = false;
@@ -94,12 +94,12 @@ int main(int argc, char** argv) {
         try {
             engine.process(parse_line(line));
         } catch (const std::exception& error) {
-            std::cerr << "replay CSV row " << line_number << ": " << error.what() << '\\n';
+            std::cerr << "replay CSV row " << line_number << ": " << error.what() << '\n';
             return 2;
         }
     }
     if (in.bad()) {
-        std::cerr << "replay CSV read failure after row " << line_number << '\\n';
+        std::cerr << "replay CSV read failure after row " << line_number << '\n';
         return 2;
     }
 

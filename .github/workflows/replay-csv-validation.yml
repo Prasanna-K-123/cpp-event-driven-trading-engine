@@ -1,0 +1,20 @@
+name: Strict Replay CSV CLI Tests
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  csv-replay:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Configure frozen project without changing CMakeLists
+        run: cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
+      - name: Build only replay executable
+        run: cmake --build build --target qdev_replay -j2
+      - name: Strict CSV schema and numeric boundary tests
+        run: python3 tests/test_replay_cli.py build/qdev_replay

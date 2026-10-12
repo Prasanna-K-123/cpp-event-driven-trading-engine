@@ -43,6 +43,8 @@ endif()
 
 include(CTest)
 if(BUILD_TESTING)
+    find_package(Python3 COMPONENTS Interpreter REQUIRED)
+    add_test(NAME qdev_replay_cli_tests COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/tests/test_replay_cli.py $<TARGET_FILE:qdev_replay>)
     add_executable(qdev_tests tests/test_engine.cpp)
     target_link_libraries(qdev_tests PRIVATE qdev_engine)
     target_compile_options(qdev_tests PRIVATE -Wall -Wextra -Wpedantic -Werror)
